@@ -9,8 +9,8 @@ export default class Galaxy
     constructor()
     {
         this.experience = new Experience()
-      this.scene = this.experience.scene
-      this.renderer = this.experience.renderer
+        this.scene = this.experience.scene
+        this.renderer = this.experience.renderer
         this.time = this.experience.time
         this.debug = this.experience.debug
 
@@ -19,9 +19,10 @@ export default class Galaxy
         {
             this.debugFolder = this.debug.ui.addFolder('parameters')
         }
-      this.setParams()
 
-      this.generateGalaxy()
+        this.setParams()
+        this.generateGalaxy()
+        this.setDebugParameters()
 
     }
 
@@ -48,7 +49,7 @@ export default class Galaxy
         this.points.geometry.dispose();
         this.geometry.dispose()
         this.material.dispose()
-        this.scene.remove(points)
+        this.scene.remove(this.points)
     }
 
     /**
@@ -127,6 +128,25 @@ export default class Galaxy
         // Update the uTime uniform in the material
         if (this.material) {
             this.material.uniforms.uTime.value = this.time.elapsed;
+        }
+    }
+
+    setDebugParameters() {
+        if (this.debug.active) {
+            this.debugFolder
+                .add(this.parameters, 'count').name('particle count').min(100).max(1000000).step(100).onFinishChange(() => this.generateGalaxy())
+            this.debugFolder
+                .add(this.parameters, 'radius').name('galaxy radius').min(0.01).max(20).step(0.01).onFinishChange(() => this.generateGalaxy())
+            this.debugFolder
+                .add(this.parameters, 'branches').name('galaxy branches').min(2).max(20).step(1).onFinishChange(() => this.generateGalaxy())
+            this.debugFolder
+                .add(this.parameters, 'randomness').name('galaxy randomness').min(0).max(2).step(0.001).onFinishChange(() => this.generateGalaxy())
+            this.debugFolder
+                .add(this.parameters, 'randomnessPower').name('randomness power').min(1).max(10).step(0.001).onFinishChange(() => this.generateGalaxy())
+            this.debugFolder
+                .addColor(this.parameters, 'insideColor').name('inside color').onFinishChange(() => this.generateGalaxy())
+            this.debugFolder
+                .addColor(this.parameters, 'outsideColor').name('outside color').onFinishChange(() => this.generateGalaxy())
         }
     }
 
