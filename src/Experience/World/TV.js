@@ -35,10 +35,20 @@ export default class TV
       
       console.log(this.mesh.geometry)
       let uv = this.mesh.geometry.attributes.uv.array
-      console.log(uv)
+
+
+        // for (let i = 0; i < uv.length; i += 4) {
+        //     uv[i] = 1
+        //     uv[i + 1] = 1
+        //     uv[i + 2] = 0
+        //     uv[i + 3] = 1
+        // }
+
+        uv.needsUpdate = true
+
+        console.log(uv)
       
-      
-      
+
       this.model.traverse((child) =>
         {
             if(child instanceof THREE.Mesh)
