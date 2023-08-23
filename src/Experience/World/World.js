@@ -3,6 +3,7 @@ import Environment from './Environment.js'
 import Floor from './Floor.js'
 import Fox from './Fox.js'
 import Galaxy from './Galaxy.js'
+import Rabbit from './Rabbit.js'
 
 export default class World
 {
@@ -16,8 +17,9 @@ export default class World
         this.resources.on('ready', () =>
         {
             // Setup
-            // this.floor = new Floor()
-            // this.fox = new Fox()
+            //this.floor = new Floor()
+            this.fox = new Fox()
+            //this.rabbit = new Rabbit()
             this.environment = new Environment()
             this.galaxy = new Galaxy()
 
