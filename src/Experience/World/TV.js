@@ -1,6 +1,9 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
 
+// Model Author - Sketchfab - SilkevdSmissen
+// https://sketchfab.com/3d-models/vintage-television-panasonic-tr-555-780fac0ec94e450eb5cb54348fc2933e
+
 export default class TV
 {
     constructor()
@@ -25,11 +28,18 @@ export default class TV
 
     setModel()
     {
-        this.model = this.resource.scene
-        this.model.scale.set(1.0, 1.0, 1.0)
-        this.scene.add(this.model)
-
-        this.model.traverse((child) =>
+      this.model = this.resource.scene
+      this.model.scale.set(1.0, 1.0, 1.0)
+      this.scene.add(this.model)
+      this.mesh = this.model.children[0].children[0]
+      
+      console.log(this.mesh.geometry)
+      let uv = this.mesh.geometry.attributes.uv.array
+      console.log(uv)
+      
+      
+      
+      this.model.traverse((child) =>
         {
             if(child instanceof THREE.Mesh)
             {
