@@ -4,6 +4,7 @@ import Floor from './Floor.js'
 import Fox from './Fox.js'
 import Galaxy from './Galaxy.js'
 import Rabbit from './Rabbit.js'
+import TV from './TV.js'
 
 export default class World
 {
@@ -18,8 +19,9 @@ export default class World
         {
             // Setup
             //this.floor = new Floor()
-            this.fox = new Fox()
+            //this.fox = new Fox()
             //this.rabbit = new Rabbit()
+            this.tv = new TV()
             this.environment = new Environment()
             this.galaxy = new Galaxy()
 

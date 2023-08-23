@@ -28,8 +28,8 @@ export default [
         path: 'models/Fox/glTF/Fox.gltf'
     },
     {
-        name: 'rabbitModel',
+        name: 'tvModel',
         type: 'gltfModel',
-        path: 'models/Rabbit/glTF/rabbit.gltf'
+        path: 'models/TV/glTF-Binary/tv2.glb'
     }
 ]
